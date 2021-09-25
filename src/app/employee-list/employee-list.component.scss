@@ -1,0 +1,10 @@
+@media only screen and (max-width: 767px) {
+  #search {
+    width: 200px;
+  }
+
+  .card-body div:last-of-type {
+    flex-direction: column;
+    align-items: center;
+  }
+}

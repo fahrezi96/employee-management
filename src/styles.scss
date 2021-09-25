@@ -1,1 +1,36 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* Importing Bootstrap SCSS file. */
+@import "~bootstrap/scss/bootstrap";
+
+body {
+  margin: 0;
+}
+
+button {
+  cursor: pointer;
+}
+
+label {
+  font-weight: bold;
+}
+
+th {
+  cursor: pointer;
+}
+
+.toast {
+  position: absolute;
+  right: 5px;
+  top: 70px;
+  min-width: 200px;
+
+  .toast-header {
+    background-color: transparent;
+    color: white;
+  }
+
+  .toast-body {
+    color: white;
+  }
+}

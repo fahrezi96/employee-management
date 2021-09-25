@@ -1,0 +1,99 @@
+<div class="card mb-2">
+  <div class="card-header bg-primary text-white">
+    <span class="font-weight-bold">List of Employee</span>
+  </div>
+  <div class="card-body">
+    <div class="d-flex justify-content-between align-items-center mb-2">
+      <a routerLink="/add" class="btn btn-primary">Add</a>
+      <form>
+        <div class="form-group form-inline mb-0">
+          <label for="search">Search data: </label>
+          <input
+            id="search"
+            name="search"
+            class="form-control ml-2"
+            type="text"
+            (keyup.enter)="onSearch()"
+            [(ngModel)]="search"
+            placeholder="Type and enter"
+          />
+        </div>
+      </form>
+    </div>
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th (click)="sort('no')">No</th>
+            <th (click)="sort('firstName')">Name</th>
+            <th (click)="sort('email')">Email</th>
+            <th (click)="sort('birthDate')">Birth Date</th>
+            <th (click)="sort('basicSalary')">Basic Salary</th>
+            <th (click)="sort('status')">Status</th>
+            <th (click)="sort('group')">Group</th>
+            <th style="cursor: default">Action</th>
+          </tr>
+        </thead>
+        <tbody *ngIf="employees.length > 0">
+          <tr *ngFor="let e of employees">
+            <td>{{ e.no }}</td>
+            <td>{{ e.firstName }} {{ e.lastName }}</td>
+            <td>{{ e.email }}</td>
+            <td>{{ e.birthDate | date: medium }}</td>
+            <td>{{ e.basicSalary | currency: "Rp ":"symbol":"3.0" }}</td>
+            <td>{{ e.status === 1 ? "Active" : "Nonactive" }}</td>
+            <td>{{ e.group }}</td>
+            <td>
+              <span class="d-flex">
+                <a
+                  [routerLink]="['/list', e.username]"
+                  class="btn btn-sm btn-primary"
+                >
+                  Detail
+                </a>
+                <button
+                  (click)="notifOnEdit('Edit Success')"
+                  class="btn btn-sm btn-warning ml-2"
+                >
+                  Edit
+                </button>
+                <button
+                  (click)="notifOnDelete('Delete Success')"
+                  class="btn btn-sm btn-danger ml-2"
+                >
+                  Delete
+                </button>
+              </span>
+            </td>
+          </tr>
+        </tbody>
+        <tbody *ngIf="employees.length == 0">
+          <tr>
+            <td colspan="8">Data not found</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="d-flex justify-content-between mt-2">
+      <ngb-pagination
+        [collectionSize]="collectionSize"
+        [(page)]="page"
+        [pageSize]="pageSize"
+        [maxSize]="5"
+        [boundaryLinks]="true"
+        (pageChange)="onSearch()"
+      ></ngb-pagination>
+      <select
+        class="custom-select"
+        [(ngModel)]="pageSize"
+        (ngModelChange)="onSearch()"
+        style="width: auto"
+      >
+        <option [ngValue]="5">5</option>
+        <option [ngValue]="10">10</option>
+        <option [ngValue]="15">15</option>
+        <option [ngValue]="20">20</option>
+      </select>
+    </div>
+  </div>
+</div>
