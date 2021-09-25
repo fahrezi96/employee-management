@@ -11,7 +11,7 @@
         </div>
         <div class="form-group col-md-6">
           <label>Basic Salary</label>
-          <div>{{ employee.basicSalary }}</div>
+          <div>{{ employee.basicSalary | currency: "Rp ":"symbol":"3.0" }}</div>
         </div>
       </div>
       <div class="form-row">
@@ -21,7 +21,7 @@
         </div>
         <div class="form-group col-md-6">
           <label>Status</label>
-          <div>{{ employee.status }}</div>
+          <div>{{ employee.status === 1 ? "Active" : "Nonactive" }}</div>
         </div>
       </div>
       <div class="form-row">
@@ -41,7 +41,7 @@
         </div>
         <div class="form-group col-md-6">
           <label>Birth Date</label>
-          <div>{{ employee.birthDate }}</div>
+          <div>{{ employee.birthDate | date: medium }}</div>
         </div>
       </div>
       <div class="form-row">
