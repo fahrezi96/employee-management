@@ -39,7 +39,7 @@
             <td>{{ e.no }}</td>
             <td>{{ e.firstName }} {{ e.lastName }}</td>
             <td>{{ e.email }}</td>
-            <td>{{ e.birthDate | date: medium }}</td>
+            <td>{{ e.birthDate | date }}</td>
             <td>{{ e.basicSalary | currency: "Rp ":"symbol":"3.0" }}</td>
             <td>{{ e.status === 1 ? "Active" : "Nonactive" }}</td>
             <td>{{ e.group }}</td>
